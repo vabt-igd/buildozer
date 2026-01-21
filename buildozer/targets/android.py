@@ -1182,7 +1182,10 @@ class TargetAndroid(Target):
         # android.add_gradle_arguments
         gradle_args = config.getlist('app', 'android.add_gradle_arguments', [])
         for gradle_arg in gradle_args:
-            build_cmd += [('--add-gradle-arguments', gradle_arg)]
+            gradle_arg = gradle_arg.strip()
+            if not gradle_arg:
+                continue
+            build_cmd += [(f'--add-gradle-arguments={gradle_arg}',)]
 
         # android packaging options
         pkgoptions = config.getlist('app', 'android.add_packaging_options', [])
