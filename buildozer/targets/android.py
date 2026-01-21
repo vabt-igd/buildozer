@@ -1179,6 +1179,11 @@ class TargetAndroid(Target):
         for repo in repos:
             build_cmd += [('--add-gradle-repository', repo)]
 
+        # android.add_gradle_arguments
+        gradle_args = config.getlist('app', 'android.add_gradle_arguments', [])
+        for gradle_arg in gradle_args:
+            build_cmd += [('--add-gradle-arguments', gradle_arg)]
+
         # android packaging options
         pkgoptions = config.getlist('app', 'android.add_packaging_options', [])
         for pkgoption in pkgoptions:
