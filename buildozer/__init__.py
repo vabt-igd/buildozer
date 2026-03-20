@@ -160,7 +160,7 @@ class Buildozer:
 
         orientation = self.config.getlist("app", "orientation", ["landscape"])
         for o in orientation:
-            if o not in ("landscape", "portrait", "landscape-reverse", "portrait-reverse"):
+            if o not in ("landscape", "portrait", "landscape-reverse", "portrait-reverse", "all"):
                 adderror(f'[app] "{o}" is not a valid  value for "orientation"')
         if errors:
             self.logger.error('{0} error(s) found in the buildozer.spec'.format(

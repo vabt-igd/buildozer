@@ -1255,6 +1255,8 @@ class TargetAndroid(Target):
         if config.getdefault('app', 'p4a.bootstrap', 'sdl2') != 'service_only':
             # add orientation
             orientation = config.getlist('app', 'orientation', ['landscape'])
+            if 'all' in orientation:
+                orientation = ['landscape', 'portrait', 'landscape-reverse', 'portrait-reverse']
             for orient in orientation:
                 build_cmd += [("--orientation", orient)]
 
